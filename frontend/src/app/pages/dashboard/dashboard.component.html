@@ -64,7 +64,11 @@
                 fill="#404040"
               />
             </svg>
-            <input type="text" placeholder="Search" />
+            <input
+              type="text"
+              placeholder="Search"
+              (input)="onSearchChange($any($event.target).value)"
+            />
           </div>
         </div>
       </div>
@@ -72,7 +76,10 @@
       <div class="toolbar-right">
         <button class="btn primary" (click)="openAddUser()">+ Add User</button>
 
-        <select class="select">
+        <select
+          class="select"
+          (change)="onSortChange($any($event.target).value)"
+        >
           <option>Sort by: Recent</option>
           <option>Sort by: Name</option>
           <option>Sort by: Role</option>
@@ -140,7 +147,7 @@
                   />
                 </svg>
               </button>
-              <button class="link-button danger">
+              <button class="link-button" (click)="deleteUser(u.id)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -184,18 +191,29 @@
       <div class="pagination-left">
         <label>
           Items per page
-          <select class="select small">
-            <option>4</option>
-            <option>10</option>
-            <option>25</option>
+          <select
+            class="select small"
+            (change)="onPageSizeChange($any($event.target).value)"
+          >
+            <option value="4">4</option>
+            <option value="10" selected>10</option>
+            <option value="25">25</option>
           </select>
         </label>
         <span class="range-text">1–4 of 10</span>
       </div>
 
       <div class="pagination-right">
-        <button class="icon-button" aria-label="Previous page">‹</button>
-        <button class="icon-button" aria-label="Next page">›</button>
+        <button
+          class="icon-button"
+          aria-label="Previous page"
+          (click)="prevPage()"
+        >
+          ‹
+        </button>
+        <button class="icon-button" aria-label="Next page" (click)="nextPage()">
+          ›
+        </button>
       </div>
     </div>
   </section>
@@ -220,49 +238,82 @@
     <div class="modal-body">
       <!-- USER ID -->
       <div class="form-row">
-        <input type="text" class="input" placeholder="User ID *" />
+        <input
+          type="text"
+          class="input"
+          placeholder="User ID *"
+          [(ngModel)]="newUser.userId"
+        />
       </div>
 
       <!-- NAME -->
       <div class="form-grid-2">
         <div class="form-row">
-          <input type="text" class="input" placeholder="First Name * " />
+          <input
+            type="text"
+            class="input"
+            placeholder="First Name *"
+            [(ngModel)]="newUser.firstName"
+          />
         </div>
         <div class="form-row">
-          <input type="text" class="input" placeholder="Last Name *" />
+          <input
+            type="text"
+            class="input"
+            placeholder="Last Name *"
+            [(ngModel)]="newUser.lastName"
+          />
         </div>
       </div>
 
       <!-- EMAIL + MOBILE -->
       <div class="form-grid-3">
         <div class="form-row">
-          <input type="email" class="input" placeholder="Email ID *" />
+          <input
+            type="email"
+            class="input"
+            placeholder="Email ID *"
+            [(ngModel)]="newUser.email"
+          />
         </div>
         <div class="form-row">
-          <input type="tel" class="input" placeholder="Mobile No" />
+          <input
+            type="tel"
+            class="input"
+            placeholder="Mobile No"
+            [(ngModel)]="newUser.phone"
+          />
         </div>
-        <div class="form-row">
-          <select class="input">
-            <option value="">Select role Type</option>
-            <option>Admin</option>
-            <option>Employee</option>
-            <option>Manager</option>
-            <option>Viewer</option>
-          </select>
-        </div>
+        <select class="input" [(ngModel)]="newUser.roleId">
+          <option value="">Select role Type</option>
+          <option *ngFor="let r of roles" [value]="r.roleId">
+            {{ r.roleName }}
+          </option>
+        </select>
       </div>
 
       <!-- USERNAME + PASSWORD -->
       <div class="form-grid-3">
-        <input type="text" class="input" placeholder="Username * " />
+        <input
+          type="text"
+          class="input"
+          placeholder="Username *"
+          [(ngModel)]="newUser.username"
+        />
         <div class="form-row">
-          <input type="password" class="input" placeholder="Password *" />
+          <input
+            type="password"
+            class="input"
+            placeholder="Password *"
+            [(ngModel)]="newUser.password"
+          />
         </div>
         <div class="form-row">
           <input
             type="password"
             class="input"
             placeholder="Confirm password *"
+            [(ngModel)]="newUser.confirmPassword"
           />
         </div>
       </div>
