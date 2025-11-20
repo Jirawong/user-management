@@ -1,0 +1,83 @@
+<div class="sidebar">
+  <!-- Logo -->
+  <div class="logo">
+    <h2>YOURLOGO</h2>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'dashboard' }"
+      (click)="setActive('dashboard')"
+    >
+      <app-icon name="dashboard" />
+      <span>Dashboard</span>
+    </div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'users' }"
+      (click)="setActive('users')"
+    >
+      <app-icon name="users" />
+      <span>Users</span>
+    </div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'documents' }"
+      (click)="setActive('documents')"
+    >
+      <app-icon name="documents" />
+      <span>Documents</span>
+    </div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'photos' }"
+      (click)="setActive('photos')"
+    >
+      <app-icon name="photos" />
+      <span>Photos</span>
+    </div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'hierarchy' }"
+      (click)="setActive('hierarchy')"
+    >
+      <app-icon name="hierarchy" />
+      <span>Hierarchy</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'message' }"
+      (click)="setActive('message')"
+    >
+      <app-icon name="message" />
+      <span>Message</span>
+    </div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'help' }"
+      (click)="setActive('help')"
+    >
+      <app-icon name="help" />
+      <span>Help</span>
+    </div>
+
+    <div
+      class="nav-item"
+      [ngClass]="{ active: active === 'settings' }"
+      (click)="setActive('settings')"
+    >
+      <app-icon name="settings" />
+      <span>Settings</span>
+    </div>
+  </nav>
+</div>
