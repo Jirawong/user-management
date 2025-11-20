@@ -18,7 +18,6 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // One-to-one Role <-> Permission (by RoleId)
         modelBuilder.Entity<Role>()
             .HasOne(r => r.Permission)
             .WithOne(p => p.Role)
