@@ -1,0 +1,15 @@
+<div class="dropdown">
+  <button class="dropdown-btn" (click)="toggle()">
+    <app-icon [name]="icon" />
+  </button>
+
+  <div class="dropdown-menu" *ngIf="open">
+    <div
+      class="dropdown-item"
+      *ngFor="let item of items"
+      (click)="selectItem(item)"
+    >
+      {{ item }}
+    </div>
+  </div>
+</div>
