@@ -81,18 +81,18 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (res: { totalCount: number; dataSource: any[] }) => {
           this.totalCount = res.totalCount;
-          console.log('RAW RES:', res); // <- LOOK HERE
+          console.log('RAW RES:', res);
           debugger;
           this.users = res.dataSource.map((u) => ({
             id: u.userId,
             name: `${u.firstName} ${u.lastName}`,
             email: u.email,
-            createdAt: new Date(u.createDate).toLocaleDateString(),
+            createdAt: new Date(u.createdDate).toLocaleDateString(),
             role: u.role.roleName,
             permission: u.permissions?.permissionName ?? 'Unknown',
             raw: u,
           }));
-
+          console.log('USER : ', this.users);
           this.loading = false;
         },
         error: (err: any) => {
